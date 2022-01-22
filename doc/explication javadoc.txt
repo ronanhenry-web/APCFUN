@@ -1,0 +1,17 @@
+- Voici plusieurs fichier qui vont vous permettre de voir grossièrement des informations comme
+les classes, les méthodes, les packages, les ressources, ...
+
+- Aussi on peut voir la hièrarchie du dossier APCFUN.
+
+- Nous avons réalisé des tests unitaires sur la disponibilé de la salle et le prix monétaire
+lors d'une session de sport.
+
+- Ensuite au niveau graphisque nous avons passé le semi-graphique en graphique avec
+JavaFX pour un meilleur rendu pour le lancer il faut clic droit sur le projet puis
+run as maven build.
+
+- Vous avez un base de donnée existante et accessible avec SQLite. Elle s'utilise avec le
+package com.CFUN.sqlite. Pour la visualiser utiliser SQLiteStudio en récupérant le fichier
+equipement.db situé au dessus de pom.xml.
+
+- Pour barcode ...
