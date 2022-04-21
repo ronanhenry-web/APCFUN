@@ -3,16 +3,20 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="991.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.CFUN.CFUNGIT.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="991.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.CFUN.CFUNGIT.PrimaryController">
    <children>
       <GridPane prefHeight="566.0" prefWidth="994.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -24,6 +28,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+         
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #1F1F1F;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <children>
                   <ImageView fitHeight="240.0" fitWidth="344.0" layoutX="76.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="211.3477325439453" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="76.0" AnchorPane.topAnchor="211.0">
@@ -38,9 +43,11 @@
                   </Text>
                </children>
             </AnchorPane>
+            
             <AnchorPane fx:id="TypeOperation" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <JFXHamburger layoutX="432.0" layoutY="26.0" />
+                  
                   <JFXButton fx:id="operationButton" buttonType="RAISED" layoutX="67.0" layoutY="238.0" onAction="#EntreeButton" prefHeight="51.0" prefWidth="140.0" style="-fx-background-color: grey;" text="Entrée" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="26.0" />
@@ -78,6 +85,7 @@
                   </JFXButton>
                </children>
             </AnchorPane>
+            
             <AnchorPane fx:id="LoginSelection" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <JFXButton buttonType="RAISED" layoutX="288.0" layoutY="329.0" onAction="#ShowTypeSelection" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: #FF6F16;" text="Client" textFill="WHITE">
@@ -97,6 +105,7 @@
                   </Text>
                </children>
             </AnchorPane>
+            
             <AnchorPane fx:id="PasswordAnchor" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Text layoutX="157.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe ">
@@ -110,7 +119,7 @@
                      </font>
                   </JFXButton>
                   <PasswordField fx:id="PasswordFielde" layoutX="172.0" layoutY="257.0" />
-                  <Text fx:id="WrongPasswordText" fill="#d30f0f" layoutX="178.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mauvais mot de passe" visible="false" wrappingWidth="140.0" />
+                  <Text fx:id="CheckPasswordText" fill="#d30f0f" layoutX="178.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mauvais mot de passe" visible="false" wrappingWidth="140.0" />
                   <JFXButton buttonType="RAISED" layoutX="189.0" layoutY="446.0" onAction="#BackToMainPage" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #FF6F16;" text="Retour" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="17.0" />
@@ -118,6 +127,52 @@
                   </JFXButton>
                </children>
             </AnchorPane>
+            
+            <AnchorPane fx:id="Connected" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+               	  <Text fill="#ff6f16" layoutX="134" layoutY="68" strokeType="OUTSIDE" strokeWidth="0.0" text="Vue Gestionnaire">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+                  <TableView layoutX="12.0" layoutY="102.0" prefHeight="294.0" prefWidth="470.0">
+                     <columns>
+                        <TableColumn editable="false" prefWidth="196.0" sortable="false" text="Nom" />
+                        <TableColumn editable="false" prefWidth="199.99993896484375" sortable="false" text="Type" />
+                        <TableColumn editable="false" prefWidth="74.39996337890625" sortable="false" text="Quantité" />
+                     </columns>
+                  </TableView>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="58.0" layoutX="148.0" layoutY="255.0" stroke="WHITE" strokeType="INSIDE" width="200.0" />
+                  <Line endX="368.0" layoutX="113.0" layoutY="156.0" startX="-100.0" />
+                  <Line endX="368.0" layoutX="113.0" layoutY="216.0" startX="-100.0" />
+                  <Line endX="368.0" layoutX="113.0" layoutY="186.0" startX="-100.0" />
+                  <Line endX="368.0" layoutX="113.0" layoutY="246.0" startX="-100.0" />
+                  <Line endX="368.0" layoutX="113.0" layoutY="276.0" startX="-100.0" />
+                  <Line endX="368.0" layoutX="113.0" layoutY="306.0" startX="-100.0" />
+                  <Line endX="368.0" layoutX="113.0" layoutY="336.0" startX="-100.0" />
+                  <Line endX="368.0" layoutX="113.0" layoutY="366.0" startX="-100.0" />
+                  <Line endX="84.0" endY="229.0" layoutX="124.5" layoutY="166.0" startX="84.0" startY="-40.0" />
+                  <Line endX="84.0" endY="229.0" layoutX="324.5" layoutY="166.0" startX="84.0" startY="-40.0" />
+                  <Text fx:id="COLUMN11" layoutX="15.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
+                  <Text fx:id="COLUMN12" layoutX="15.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
+                  <Text fx:id="COLUMN14" layoutX="15.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
+                  <Text fx:id="COLUMN13" layoutX="15.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
+                  <Text fx:id="COLUMN21" layoutX="211.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
+                  <Text fx:id="COLUMN22" layoutX="211.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
+                  <Text fx:id="COLUMN24" layoutX="211.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
+                  <Text fx:id="COLUMN23" layoutX="211.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
+                  <Text fx:id="COLUMN31" layoutX="411.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="71.08929443359375" />
+                  <Text fx:id="COLUMN32" layoutX="411.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="71.08929443359375" />
+                  <Text fx:id="COLUMN33" layoutX="411.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="71.08929443359375" />
+                  <Text fx:id="COLUMN34" layoutX="411.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="71.08929443359375" />
+                  <JFXButton layoutX="358.0" layoutY="470.0" onAction="#Disconnect" prefHeight="39.0" prefWidth="101.0" style="-fx-background-color: #ff6f16;" text="Déconnecter" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+            	</children>
+            </AnchorPane>
+            
          </children>
       </GridPane>
    </children>

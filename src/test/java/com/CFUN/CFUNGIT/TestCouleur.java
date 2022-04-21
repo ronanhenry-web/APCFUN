@@ -1,7 +1,6 @@
 package com.CFUN.CFUNGIT;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import com.CFUN.app.ChoixCouleur;
@@ -24,8 +23,7 @@ public class TestCouleur {
 		// Test Couleur Rouge
 		ChoixCouleur getDispoOrange = new ChoixCouleur(0.8);
 		Couleur couleurToTestOrange = Couleur.orange;
-		assertEquals("Erreur sur la couleur " , getDispoOrange.getCouleur(), couleurToTestOrange);
-				
+		assertEquals("Erreur sur la couleur " , getDispoOrange.getCouleur(), couleurToTestOrange);	
 	}
 
 }

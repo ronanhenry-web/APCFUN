@@ -1,10 +1,6 @@
 package com.CFUN.app;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class Complexe {
@@ -24,11 +20,11 @@ public class Complexe {
 		return nomComplexe;
 	}
 
-	private int nbTotalPlacesFit;
-	private int nbTotalPlacesMuscu;
+	private static int nbTotalPlacesFit;
+	private static int nbTotalPlacesMuscu;
 
-	private int nbPlacesOccupeesFit;
-	private int nbPlacesOccupeesMuscu;
+	private static int nbPlacesOccupeesFit;
+	private static int nbPlacesOccupeesMuscu;
 
 	List<Arrivee> lesArrivees = new ArrayList<Arrivee>();
 
@@ -39,7 +35,7 @@ public class Complexe {
 		ok = false;
 		choix = uneArrivee.getChoixSport();
 		if (choix == 'F') {
-			if (this.etatFit() != 1) {
+			if (Complexe.etatFit() != 1) {
 				Complexe.setNumeroActuel();
 				uneArrivee.setNumeroArrivee(Complexe.getNumeroActuel());
 				lesArrivees.add(uneArrivee);
@@ -47,7 +43,7 @@ public class Complexe {
 				ok = true;
 			}
 		} else {
-			if (this.etatMuscu() != 1.0) {
+			if (Complexe.etatMuscu() != 1.0) {
 				Complexe.setNumeroActuel();
 				uneArrivee.setNumeroArrivee(Complexe.getNumeroActuel());
 				lesArrivees.add(uneArrivee);
@@ -59,81 +55,53 @@ public class Complexe {
 	}
 
 	public Arrivee sortieUsager(final int entree) {
-
 		if (Arrivee.GetArrivantByTicket(String.valueOf(entree)).getChoixSport() == 'F') {
 			this.oterUsagerFitness();
 		} else {
 			this.oterUsagerMusculation();
 		}
 		
-		Arrivee.GetArrivantByTicket(String.valueOf(entree))
+		Arrivee.GetArrivantByTicket(String.valueOf(entree));
+		Arrivee
 				.RemoveArrivant(Arrivee.GetArrivantByTicket(String.valueOf(entree)));
 
 		return Arrivee.GetArrivantByTicket(String.valueOf(entree));
 	}
 
 	public Complexe(final int nbTotalPlacesMuscu, final int nbTotalPlacesFit, final String nomComplexe) {
-		this.nbTotalPlacesFit = nbTotalPlacesFit;
-		this.nbTotalPlacesMuscu = nbTotalPlacesMuscu;
+		Complexe.nbTotalPlacesFit = nbTotalPlacesFit;
+		Complexe.nbTotalPlacesMuscu = nbTotalPlacesMuscu;
 		this.nomComplexe = nomComplexe;
-		this.nbPlacesOccupeesFit = 0;
-		this.nbPlacesOccupeesMuscu = 0;
+		Complexe.nbPlacesOccupeesFit = 0;
+		Complexe.nbPlacesOccupeesMuscu = 0;
 	}
 
-	private String couleurMuscu() {
-		ChoixCouleur choixCouleur = new ChoixCouleur(this.etatMuscu());
+	@SuppressWarnings("unused")
+	private static String couleurMuscu() {
+		ChoixCouleur choixCouleur = new ChoixCouleur(etatMuscu());
 		return choixCouleur.getCouleur().toString();
 	}
 
-	public double etatFit() {
-		return (this.getNbPlacesOccupeesFit()) * 1.0 / this.nbTotalPlacesFit;
+	public static double etatFit() {
+		return (getNbPlacesOccupeesFit()) * 1.0 / nbTotalPlacesFit;
+	}
+	
+	public static String[] lesInfos() {
+		String[] elDoc = new String[10];
+		elDoc[0] = String.valueOf(getNbPlacesRestantesMuscu());
+		elDoc[1] = String.valueOf(nbPlacesOccupeesMuscu);
+		elDoc[2] = String.valueOf(getNbPlacesRestantesFit());
+		elDoc[3] = String.valueOf(nbPlacesOccupeesFit);
+
+		return elDoc;
 	}
 
-	public String lesInfos() {
-		final String MSGNOM = "Etat du complexe : ";
-		final String MSGDATE = "date : ";
-		final String MSGHEURE = "heure : ";
-		final String MSGDISPMUSCU = "Places disponibles M : ";
-		final String MSGDISPFIT = "Places disponibles F : ";
-		final String MSGOCCMUSCU = "Places occupées M : ";
-		final String MSGOCCFIT = "Places occup�es F : ";
-		final String MSGTXMUSCU = "Taux occ. M : ";
-		final String MSGTXFIT = "Taux occ. F : ";
-		final String MSGCOULMUSCU = "Couleur M : ";
-		final String MSGCOULFIT = "Couleur F : ";
-		final String MSGBAS = "M : en musculation	F : en fitness";
-
-		String leDoc;
-
-		DecimalFormat df2 = new DecimalFormat("##0.00%");
-		leDoc = MSGNOM + this.nomComplexe + "\t";
-
-		Date laDate = Calendar.getInstance().getTime();
-		SimpleDateFormat leJour = new SimpleDateFormat("dd/MM/yyyy");
-		leDoc += MSGDATE + leJour.format(laDate) + "\t";
-		SimpleDateFormat lHeure = new SimpleDateFormat("HH:mm");
-		leDoc += MSGHEURE + lHeure.format(laDate) + "\n";
-
-		leDoc += MSGDISPMUSCU + this.getNbPlacesRestantesMuscu() + "\t";
-		leDoc += MSGOCCMUSCU + this.nbPlacesOccupeesMuscu + "\t";
-		leDoc += MSGTXMUSCU + df2.format(this.etatMuscu()) + "\t";
-		leDoc += MSGCOULMUSCU + this.couleurMuscu() + "\n";
-
-		leDoc += MSGDISPFIT + this.getNbPlacesRestantesFit() + "\t";
-		leDoc += MSGOCCFIT + this.nbPlacesOccupeesFit + "\t";
-		leDoc += MSGTXFIT + df2.format(this.etatFit()) + "\t";
-		leDoc += MSGCOULFIT + this.couleurFit() + "\n\n";
-
-		leDoc += MSGBAS + "\n\n";
-		return leDoc;
+	public static int getNbPlacesRestantesFit() {
+		return nbTotalPlacesFit - (nbPlacesOccupeesFit);
 	}
 
-	public int getNbPlacesRestantesFit() {
-		return this.nbTotalPlacesFit - (this.nbPlacesOccupeesFit);
-	}
-
-	public int getNbPlacesOccupeesFit() {
-		return this.nbPlacesOccupeesFit;
+	public static int getNbPlacesOccupeesFit() {
+		return Complexe.nbPlacesOccupeesFit;
 	}
 
 	public void nouvelUsagerFitness() {
@@ -144,12 +112,12 @@ public class Complexe {
 		nbPlacesOccupeesFit--;
 	}
 
-	public int getNbPlacesRestantesMuscu() {
-		return this.nbTotalPlacesMuscu - (this.nbPlacesOccupeesMuscu);
+	public static int getNbPlacesRestantesMuscu() {
+		return nbTotalPlacesMuscu - (nbPlacesOccupeesMuscu);
 	}
 
-	public int getNbPlacesOccupeesMuscu() {
-		return this.nbPlacesOccupeesMuscu;
+	public static int getNbPlacesOccupeesMuscu() {
+		return Complexe.nbPlacesOccupeesMuscu;
 	}
 
 	public void nouvelUsagerMusculation() {
@@ -160,15 +128,17 @@ public class Complexe {
 		nbPlacesOccupeesMuscu--;
 	}
 
-	private String couleurFit() {
-		ChoixCouleur choixCouleur = new ChoixCouleur(this.etatFit());
+	@SuppressWarnings("unused")
+	private static String couleurFit() {
+		ChoixCouleur choixCouleur = new ChoixCouleur(etatFit());
 		return choixCouleur.getCouleur().toString();
 	}
 
-	public double etatMuscu() {
-		return (this.getNbPlacesOccupeesMuscu()) * 1.0 / this.nbTotalPlacesMuscu;
+	public static double etatMuscu() {
+		return (getNbPlacesOccupeesMuscu()) * 1.0 / nbTotalPlacesMuscu;
 	}
 
+	@SuppressWarnings("unused")
 	private Arrivee recherche(int num) {
 		int i = 0;
 		Arrivee courant = lesArrivees.get(i);

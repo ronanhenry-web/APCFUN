@@ -8,41 +8,42 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.CFUN.CFUNGIT.SecondaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.CFUN.CFUNGIT.SecondaryController">
    <children>
+   
       <AnchorPane fx:id="BilletInfoAnchor" prefHeight="580.0" prefWidth="1000.0" visible="false">
          <children>
-            <Text layoutX="93.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+            <Text layoutX="93.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Date :">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text fx:id="DateField" layoutX="147.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="valeur">
+            <Text fx:id="DateField" layoutX="155.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="valeur">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="91.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket">
+            <Text layoutX="91.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Ticket :">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text fx:id="TicketField" layoutX="150.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="valeurTicket">
+            <Text fx:id="TicketField" layoutX="165.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="valeurTicket">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="91.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complexe">
+            <Text layoutX="91.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Complexe :">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text fx:id="ComplexeField" layoutX="192.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="valeurComplexe">
+            <Text fx:id="ComplexeField" layoutX="203.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="valeurComplexe">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="90.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant">
+            <Text layoutX="90.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Montant :">
                <font>
                   <Font size="20.0" />
                </font>
@@ -52,18 +53,19 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="93.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure">
+            <Text layoutX="93.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Heure :">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text fx:id="HeureField" layoutX="172.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="valeur">
+            <Text fx:id="HeureField" layoutX="165.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="valeur">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
+      
       <AnchorPane fx:id="TicketNumberSortie" layoutX="1.0" layoutY="-5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="1000.0" visible="false">
          <children>
             <JFXHamburger layoutX="919.0" layoutY="30.0" />
@@ -72,7 +74,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </TextField>
-            <Label layoutX="408.0" layoutY="249.0" text="Numero de ticket :">
+            <Label layoutX="408.0" layoutY="249.0" text="Numéro de ticket :">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -89,11 +91,48 @@
             </Text>
          </children>
       </AnchorPane>
-      <Text fx:id="ValideField" layoutX="383.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: green; -fx-font-weight: bold;" text="Ticket Pris En Compte" visible="false">
+      
+      <AnchorPane fx:id="InfoTicketEntree" layoutX="1.0" layoutY="-5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="1000.0" visible="false">
+         <children>
+            <Text fx:id="FieldNumber" layoutX="50.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Cours de :" textAlignment="CENTER">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text fx:id="FieldClientPresent" layoutX="50.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Client(s) présent(s)" textAlignment="CENTER">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text fx:id="FieldTicketRestant" layoutX="50.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Ticket(s) restant(s) :" textAlignment="CENTER">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text fx:id="FieldTauxOccupation" layoutX="50.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Taux d'occupation :" textAlignment="CENTER">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text fx:id="FieldCouleur" layoutX="50.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Disponibilité :" textAlignment="CENTER">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text fx:id="FieldCours" layoutX="50.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Cours :" textAlignment="CENTER">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      
+      <Text fx:id="ValideField" layoutX="26.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #FF6F16; -fx-font-weight: bold;" text="Ticket Pris En Compte" textAlignment="CENTER" visible="false" wrappingWidth="950.6999807357789">
          <font>
             <Font size="23.0" />
          </font>
-      </Text>
+      </Text>      
+      
       <JFXButton layoutX="455.0" layoutY="462.0" onAction="#BackToMainPage" prefHeight="30.0" prefWidth="89.0" style="-fx-background-color: #FF6F16; -fx-text-fill: white; -fx-font-weight: bold;" text="Retour" />
    </children>
 </AnchorPane>

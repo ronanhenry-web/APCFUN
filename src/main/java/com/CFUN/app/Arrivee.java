@@ -14,7 +14,7 @@ public class Arrivee {
 
 	private static int nbMuscu = 4;
 	private static int nbFit = 5;
-	private static final String nomComplexe = "C Fun";
+	private static final String nomComplexe = "CFUN";
 
 	static Complexe leComplexe = new Complexe(nbMuscu, nbFit, nomComplexe);
 
@@ -37,36 +37,16 @@ public class Arrivee {
 
 	private Complexe complexe;
 
+	// Constructeur
 	public Arrivee(final Complexe complexe, final char choixSport) {
 		this.horaireArrivee = Calendar.getInstance().getTimeInMillis();
 		this.choixSport = choixSport;
 		this.complexe = complexe;
 		this.hDep = null;
 	}
-
-	public String afficheBillet() {
-		final String MSGNOM = "Complexe ";
-		final String MSGNUM = "Billet d'entrée n° : ";
-		final String MSGDATE = "Date : ";
-		final String MSGHEURE = "Heure : ";
-
-		String leBillet;
-		leBillet = MSGNOM + this.getComplexe().getNomComplexe() + "\t";
-		leBillet += MSGNUM + this.numeroArrivee + "\n";
-
-		Calendar leCal = Calendar.getInstance();
-		leCal.setTimeInMillis(this.horaireArrivee);
-		Date laDate = leCal.getTime();
-		SimpleDateFormat leJour = new SimpleDateFormat("dd/MM/yyyy");
-		leBillet += MSGDATE + leJour.format(laDate) + "\n";
-		SimpleDateFormat lHeure = new SimpleDateFormat("HH:mm");
-		leBillet += MSGHEURE + lHeure.format(laDate) + "\n";
-		return leBillet;
-	}
-
+	
 	public String[] GetBilletInfo() {
-
-		// Gestion de la date
+		// Gestion de la date et de l'heure
 		Calendar leCal = Calendar.getInstance();
 		leCal.setTimeInMillis(this.horaireArrivee);
 
@@ -78,12 +58,10 @@ public class Arrivee {
 		String[] BilletInfo = { this.getComplexe().getNomComplexe(), String.valueOf(this.numeroArrivee),
 				leJour.format(laDate), lHeure.format(laDate) };
 		return BilletInfo;
-
 	}
 
 	public String[] GetBilletInfoSortie() {
-
-		// Gestion de la date
+		// Gestion de la date et de l'heure
 		Calendar leCal = Calendar.getInstance();
 		leCal.setTimeInMillis(this.horaireArrivee);
 
@@ -95,9 +73,9 @@ public class Arrivee {
 		String[] BilletInfo = { this.getComplexe().getNomComplexe(), String.valueOf(this.numeroArrivee),
 				leJour.format(laDate), lHeure.format(laDate),String.valueOf(this.getMontant()) };
 		return BilletInfo;
-
 	}
 
+	// Test unitaire Monétaire
 	public String afficheTicket() {
 		final String MSGNOM = "Complexe ";
 		final String MSGNUM = "Ticket de sortie n° : ";
@@ -112,8 +90,6 @@ public class Arrivee {
 
 		this.hDep = Calendar.getInstance();
 
-		// on simule ici une sortie 32 mn plus tard
-
 		Date laDate = hDep.getTime();
 		SimpleDateFormat leJour = new SimpleDateFormat("dd/MM/yyyy");
 		leTicket += MSGDATE + leJour.format(laDate) + "\n";
@@ -124,18 +100,18 @@ public class Arrivee {
 		return leTicket;
 	}
 
-	// Test Method
+	// Test unitaire Monétaire
 	public void addTime(int additionalTime) {
 		afficheTicket();
 		hDep.add(Calendar.MINUTE, +additionalTime);
 	}
 
+	// Test unitaire Monétaire0
 	public void clearTime() {
 		hDep = Calendar.getInstance();
 	}
 
 	// Gestion des arrivants
-
 	public static Arrivee GetArrivantByTicket(String NumeroTicket) {
 		for (int i = 0; i < ListArrivant.size(); i++) {
 			if (ListArrivant.get(i).GetBilletInfo()[1].equals(NumeroTicket)) {
@@ -145,26 +121,21 @@ public class Arrivee {
 		return null;
 	}
 
-	public static List<Arrivee> GetAllArrivant() {
-		for (int i = 0; i < ListArrivant.size(); i++) {
-			System.out.println(ListArrivant.get(i).GetBilletInfo()[1]);
-		}
-		return ListArrivant;
-	}
-
+	// ADD un arrivant grâce à une entrée
 	public static void AjoutArrivant(Arrivee Arrivant) {
 		ListArrivant.add(Arrivant);
 	}
+	
+	// REMOVE une ligne (qu'on sélectionne) grâce à une sortie
 	public static void RemoveArrivant(Arrivee Arrivant) {
 		ListArrivant.remove(Arrivant);		
 	}
 	
-
+	// Test unitaire Monétaire
 	public double getMontant() {
 		double cout = 0;
 
 		if (hDep != null) {
-			// on passe des ms en mn
 			long dep = hDep.getTimeInMillis() / (1000 * 60);
 			long arr = this.horaireArrivee / (1000 * 60);
 			long duree = dep - arr;
@@ -174,32 +145,31 @@ public class Arrivee {
 
 			} else if (duree <= 15) {
 				cout = 0;
+			} else if (duree < 60) {
+					cout = 1;
 			} else {
-				if (duree < 60) {
-					cout = 1;
-				} else {
-					// cout fixe d'une heure
-					cout = 1;
-					duree -= 60;
-					// + tous les 1/4 h commencés
-					long nbquarts, reste;
-					nbquarts = duree / 15;
-					reste = duree % 15;
-					if (reste != 0)
-						nbquarts++;
-					cout += nbquarts * 0.5;
-				}
-
+				// cout fixe d'une heure
+				cout = 1;
+				duree -= 60;
+				// + tous les 1/4 h commencés
+				long nbquarts, reste;
+				nbquarts = duree / 15;
+				reste = duree % 15;
+				if (reste != 0)
+					nbquarts++;
+				cout += nbquarts * 0.5;
 			}
-		}
 
+		}
 		return cout;
 	}
 
+	// Récupération des infos de Complexe
 	public Complexe getComplexe() {
 		return this.complexe;
 	}
-
+	
+	// On initie le NUMERO d'une entrée
 	public void setNumeroArrivee(int numero) {
 		numeroArrivee = numero;
 	}

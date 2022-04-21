@@ -1,5 +1,6 @@
 package com.CFUN.app;
 
+// Test unitaire Couleur
 public class ChoixCouleur {
 	private Couleur couleur;
 

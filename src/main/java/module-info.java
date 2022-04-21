@@ -1,6 +1,5 @@
 module com.CFUN.CFUNGIT {
     requires javafx.controls;
-    requires com.keepautomation.barcode;
     requires javafx.fxml;
 	requires java.desktop;
 	requires javafx.graphics;
