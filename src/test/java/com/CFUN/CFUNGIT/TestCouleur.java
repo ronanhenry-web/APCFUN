@@ -20,7 +20,7 @@ public class TestCouleur {
 		Couleur couleurToTestRouge = Couleur.rouge;
 		assertEquals("Erreur sur la couleur " , getDispoRouge.getCouleur(), couleurToTestRouge);
 		
-		// Test Couleur Rouge
+		// Test Couleur Orange
 		ChoixCouleur getDispoOrange = new ChoixCouleur(0.8);
 		Couleur couleurToTestOrange = Couleur.orange;
 		assertEquals("Erreur sur la couleur " , getDispoOrange.getCouleur(), couleurToTestOrange);	

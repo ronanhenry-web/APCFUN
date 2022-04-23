@@ -37,7 +37,7 @@ public class Arrivee {
 
 	private Complexe complexe;
 
-	// Constructeur
+	// Constructeur Arrivee
 	public Arrivee(final Complexe complexe, final char choixSport) {
 		this.horaireArrivee = Calendar.getInstance().getTimeInMillis();
 		this.choixSport = choixSport;
@@ -106,7 +106,7 @@ public class Arrivee {
 		hDep.add(Calendar.MINUTE, +additionalTime);
 	}
 
-	// Test unitaire Monétaire0
+	// Test unitaire Monétaire
 	public void clearTime() {
 		hDep = Calendar.getInstance();
 	}
@@ -169,7 +169,7 @@ public class Arrivee {
 		return this.complexe;
 	}
 	
-	// On initie le NUMERO d'une entrée
+	// On initie le numéro d'une entrée
 	public void setNumeroArrivee(int numero) {
 		numeroArrivee = numero;
 	}

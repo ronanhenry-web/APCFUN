@@ -154,7 +154,6 @@ public class PrimaryController extends Database{
 		muscuButton.setStyle("-fx-background-color: #FF6F16");
 		fitButton.setStyle("-fx-background-color: grey");
 		valideButton.setDisable(false);
-		
 	}
 
 	@FXML
@@ -168,12 +167,9 @@ public class PrimaryController extends Database{
 
 	@FXML
 	private void valideButton() throws IOException {
-		
 		//	System.out.println("Operation :" + operation + " type de sport :" + typeDeSport);
 		App.setOperation(operation);
 		App.settypeDeSport(typeDeSport);
 		App.setRoot("secondary");
-			
 	}	
-
 }

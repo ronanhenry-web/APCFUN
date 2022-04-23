@@ -68,6 +68,7 @@ public class Complexe {
 		return Arrivee.GetArrivantByTicket(String.valueOf(entree));
 	}
 
+	//	Constructeur Complexe
 	public Complexe(final int nbTotalPlacesMuscu, final int nbTotalPlacesFit, final String nomComplexe) {
 		Complexe.nbTotalPlacesFit = nbTotalPlacesFit;
 		Complexe.nbTotalPlacesMuscu = nbTotalPlacesMuscu;
@@ -76,7 +77,6 @@ public class Complexe {
 		Complexe.nbPlacesOccupeesMuscu = 0;
 	}
 
-	@SuppressWarnings("unused")
 	private static String couleurMuscu() {
 		ChoixCouleur choixCouleur = new ChoixCouleur(etatMuscu());
 		return choixCouleur.getCouleur().toString();
@@ -128,7 +128,6 @@ public class Complexe {
 		nbPlacesOccupeesMuscu--;
 	}
 
-	@SuppressWarnings("unused")
 	private static String couleurFit() {
 		ChoixCouleur choixCouleur = new ChoixCouleur(etatFit());
 		return choixCouleur.getCouleur().toString();
@@ -138,7 +137,6 @@ public class Complexe {
 		return (getNbPlacesOccupeesMuscu()) * 1.0 / nbTotalPlacesMuscu;
 	}
 
-	@SuppressWarnings("unused")
 	private Arrivee recherche(int num) {
 		int i = 0;
 		Arrivee courant = lesArrivees.get(i);

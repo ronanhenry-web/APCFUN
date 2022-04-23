@@ -31,11 +31,11 @@ public class Database {
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery(req);
 
-        System.out.println("Table gestionnaire mdp :");
+        //	System.out.println("Table gestionnaire mdp :");
         int n=0;
         while(result.next()) {
         	password[n] = result.getString("password");
-        	System.out.println(password[n]);
+        	//	System.out.println(password[n]);
         	n++;
         }
         
@@ -54,12 +54,12 @@ public class Database {
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery(req);
         
-        System.out.println("------------------------------------");
-        System.out.println("Nom équipement :");
+        //	System.out.println("------------------------------------");
+        //	System.out.println("Nom équipement :");
         int n=0;
         while(result.next()) {
         	equipementNom[n] = result.getString("nom");
-        	System.out.println(equipementNom[n]);
+        	//	System.out.println(equipementNom[n]);
         	n++;
         }
         
@@ -75,8 +75,8 @@ public class Database {
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery(req);
         
-        System.out.println("------------------------------------");
-        System.out.println("Type équipement :");
+        //	System.out.println("------------------------------------");
+        //	System.out.println("Type équipement :");
         int n=0;
         while(result.next()) {
         	if (result.getString("type").contains("F")) {
@@ -84,14 +84,14 @@ public class Database {
         	} else {
         		equipementType[n] = "Musculation";
         	}
-        	System.out.println(equipementType[n]);
+        	//	System.out.println(equipementType[n]);
         	n++;
         }
         
 		return equipementType;
     }
     
-    //	Récupérer tout les quantitées dans la table équipement
+    //	Récupérer toutes les quantitées dans la table équipement
     public static String[] getEquipementQte() throws SQLException {
     	String jdbcUrl = "jdbc:sqlite:cfun.db";
         Connection connection = DriverManager.getConnection(jdbcUrl);
@@ -100,12 +100,12 @@ public class Database {
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery(req);
         
-        System.out.println("------------------------------------");
-        System.out.println("Quantitée équipement :");
+        //	System.out.println("------------------------------------");
+        //	System.out.println("Quantitée équipement :");
         int n=0;
         while(result.next()) {
         	equipementQte[n] = result.getString("quantite");   
-        	System.out.println(equipementQte[n]);
+        	//	System.out.println(equipementQte[n]);
         	n++;
         }
         

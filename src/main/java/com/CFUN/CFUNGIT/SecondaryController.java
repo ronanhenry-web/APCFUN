@@ -16,7 +16,7 @@ public class SecondaryController {
 	private char Operation;
 	private char typedeSport;
 
-	// FXML
+	// Ticket entrée & sortie
 	public TextField valueOfTicket = null;
 	public AnchorPane TicketNumberSortie = null;
 	public AnchorPane InfoTicketEntree = null;
@@ -41,7 +41,7 @@ public class SecondaryController {
 	
 	@FXML
 	public void BackToMainPage() throws IOException {
-//		System.out.println("Back");
+		//	System.out.println("Back");
 		App.setRoot("primary");
 	}
 
@@ -148,8 +148,7 @@ public class SecondaryController {
 			DateField.setText(BilletInfo[2]);
 			HeureField.setText(BilletInfo[3]);
 			
-			/* CALCUL MONTANT */
-			
+			/* Calcul montant */
 			float montant = (float) ((float) 0);
 			String[] splittedA = BilletInfo[3].split(":");
 			int hA = Integer.parseInt(splittedA[0])*60;
@@ -163,9 +162,9 @@ public class SecondaryController {
 			
 			if(difference <= 15) {
 				montant = 0;
-			}else if(difference <= 30) {
+			} else if(difference <= 30) {
 				montant = (float) 0.5;
-			}else if (difference <= 60) {
+			} else if (difference <= 60) {
 				montant = 1;					
 			} else {
 				montant = (float) 1;
@@ -174,14 +173,14 @@ public class SecondaryController {
 					difference -= 15;
 				}
 			}
-			/* CALCUL MONTANT */
+			/* Calcul montant */
 			
 			MontantField.setText(String.valueOf(montant));
 			
 			BilletInfoAnchor.setVisible(true);
 			//	System.out.println(leComplexe.sortieUsager(TicketNumber));
 
-			}catch (Exception e) {
+			} catch (Exception e) {
 				//	System.out.println("Erreur sur le ticket ! ");
 				ErreurTicket.setVisible(true);
 			}
