@@ -37,7 +37,7 @@ public class Arrivee {
 
 	private Complexe complexe;
 
-	// Constructeur Arrivee
+	/** Constructeur Arrivee*/
 	public Arrivee(final Complexe complexe, final char choixSport) {
 		this.horaireArrivee = Calendar.getInstance().getTimeInMillis();
 		this.choixSport = choixSport;
@@ -75,7 +75,7 @@ public class Arrivee {
 		return BilletInfo;
 	}
 
-	// Test unitaire Monétaire
+	/** Test unitaire Monétaire, affichage date, numéroTicket, heure et complexe*/
 	public String afficheTicket() {
 		final String MSGNOM = "Complexe ";
 		final String MSGNUM = "Ticket de sortie n° : ";
@@ -100,18 +100,18 @@ public class Arrivee {
 		return leTicket;
 	}
 
-	// Test unitaire Monétaire
+	/** Test unitaire Monétaire, prend un temps précis*/
 	public void addTime(int additionalTime) {
 		afficheTicket();
 		hDep.add(Calendar.MINUTE, +additionalTime);
 	}
 
-	// Test unitaire Monétaire
+	/** Test unitaire Monétaire, effacer le temps*/
 	public void clearTime() {
 		hDep = Calendar.getInstance();
 	}
 
-	// Gestion des arrivants
+	/** Gestion des arrivants, donne le numéro du ticket d'une personne entrante*/
 	public static Arrivee GetArrivantByTicket(String NumeroTicket) {
 		for (int i = 0; i < ListArrivant.size(); i++) {
 			if (ListArrivant.get(i).GetBilletInfo()[1].equals(NumeroTicket)) {
@@ -121,17 +121,17 @@ public class Arrivee {
 		return null;
 	}
 
-	// ADD un arrivant grâce à une entrée
+	/** ADD un arrivant grâce à une entrée*/
 	public static void AjoutArrivant(Arrivee Arrivant) {
 		ListArrivant.add(Arrivant);
 	}
 	
-	// REMOVE une ligne (qu'on sélectionne) grâce à une sortie
+	/** REMOVE une ligne (qu'on sélectionne) grâce à une sortie*/
 	public static void RemoveArrivant(Arrivee Arrivant) {
 		ListArrivant.remove(Arrivant);		
 	}
 	
-	// Test unitaire Monétaire
+	/** Test unitaire Monétaire, calcul le montant pendant la sortie*/
 	public double getMontant() {
 		double cout = 0;
 
@@ -164,12 +164,12 @@ public class Arrivee {
 		return cout;
 	}
 
-	// Récupération des infos de Complexe
+	/** Récupération des infos de Complexe*/
 	public Complexe getComplexe() {
 		return this.complexe;
 	}
 	
-	// On initie le numéro d'une entrée
+	/** On initie le numéro d'une entrée*/
 	public void setNumeroArrivee(int numero) {
 		numeroArrivee = numero;
 	}

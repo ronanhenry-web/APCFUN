@@ -4,6 +4,7 @@ package com.CFUN.app;
 public class ChoixCouleur {
 	private Couleur couleur;
 
+	/** Test unitaire du choix de Couleur*/
 	public ChoixCouleur(final double etat) {
 		if (etat < 0.70) {
 			couleur = Couleur.vert;
@@ -14,6 +15,7 @@ public class ChoixCouleur {
 		}
 	}
 
+	// Getter de couleur
 	public Couleur getCouleur() {
 		return couleur;
 	}

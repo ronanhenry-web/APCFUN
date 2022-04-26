@@ -28,6 +28,7 @@ public class Complexe {
 
 	List<Arrivee> lesArrivees = new ArrayList<Arrivee>();
 
+	/** Choix du sport grâce à une entrée*/
 	public boolean entreeUsager(final Arrivee uneArrivee) {
 		boolean ok;
 		char choix;
@@ -54,6 +55,7 @@ public class Complexe {
 		return ok;
 	}
 
+	/** Sortie avec les infos du ticket*/
 	public Arrivee sortieUsager(final int entree) {
 		if (Arrivee.GetArrivantByTicket(String.valueOf(entree)).getChoixSport() == 'F') {
 			this.oterUsagerFitness();
@@ -68,7 +70,7 @@ public class Complexe {
 		return Arrivee.GetArrivantByTicket(String.valueOf(entree));
 	}
 
-	//	Constructeur Complexe
+	/**	Constructeur Complexe*/
 	public Complexe(final int nbTotalPlacesMuscu, final int nbTotalPlacesFit, final String nomComplexe) {
 		Complexe.nbTotalPlacesFit = nbTotalPlacesFit;
 		Complexe.nbTotalPlacesMuscu = nbTotalPlacesMuscu;
@@ -77,15 +79,18 @@ public class Complexe {
 		Complexe.nbPlacesOccupeesMuscu = 0;
 	}
 
+	/** Getter de couleur pour le test unitaire*/
 	private static String couleurMuscu() {
 		ChoixCouleur choixCouleur = new ChoixCouleur(etatMuscu());
 		return choixCouleur.getCouleur().toString();
 	}
 
+	/** Etat de la salle Fit*/
 	public static double etatFit() {
 		return (getNbPlacesOccupeesFit()) * 1.0 / nbTotalPlacesFit;
 	}
 	
+	/** Permet de savoir l'occupation de la salle*/
 	public static String[] lesInfos() {
 		String[] elDoc = new String[10];
 		elDoc[0] = String.valueOf(getNbPlacesRestantesMuscu());
@@ -128,15 +133,18 @@ public class Complexe {
 		nbPlacesOccupeesMuscu--;
 	}
 
+	/** Getter de couleur pour le test unitaire*/
 	private static String couleurFit() {
 		ChoixCouleur choixCouleur = new ChoixCouleur(etatFit());
 		return choixCouleur.getCouleur().toString();
 	}
 
+	/** Etat de la salle Muscu*/
 	public static double etatMuscu() {
 		return (getNbPlacesOccupeesMuscu()) * 1.0 / nbTotalPlacesMuscu;
 	}
 
+	/** Test */
 	private Arrivee recherche(int num) {
 		int i = 0;
 		Arrivee courant = lesArrivees.get(i);
