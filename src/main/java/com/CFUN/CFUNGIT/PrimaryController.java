@@ -1,16 +1,26 @@
 package com.CFUN.CFUNGIT;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
+
 import com.CFUN.sqlite.Database;
 import com.jfoenix.controls.JFXButton;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-public class PrimaryController extends Database{
-
+public class PrimaryController extends Database implements Initializable {
+	
 	//Operation page
 	private char operation;
 	private char typeDeSport;
@@ -27,20 +37,6 @@ public class PrimaryController extends Database{
 	public AnchorPane PasswordAnchor = null;
 	public PasswordField PasswordFielde = null;
 	public Text CheckPasswordText = null;
-	
-	//TableView Equipement
-	public Text COLUMN11 = null;
-	public Text COLUMN12 = null;
-	public Text COLUMN13 = null;
-	public Text COLUMN14 = null;
-	public Text COLUMN21 = null;
-	public Text COLUMN22 = null;
-	public Text COLUMN23 = null;
-	public Text COLUMN24 = null;
-	public Text COLUMN31 = null;
-	public Text COLUMN32 = null;
-	public Text COLUMN33 = null;
-	public Text COLUMN34 = null;
 	
 	@FXML
 	private void BackToMainPage() {
@@ -84,33 +80,54 @@ public class PrimaryController extends Database{
 	}
 	
 	//	Connection via database BDD SQLite, table equipement
-	private void equipementValue() throws SQLException {
-		String[] nom = getEquipementNom();
-		String[] type = getEquipementType();
-		String[] qte = getEquipementQte();
-		
-		// COLUMN 1 : Nom
-		COLUMN11.setText(nom[0]);
-		COLUMN12.setText(nom[1]);
-		COLUMN13.setText(nom[2]);
-		COLUMN14.setText(nom[3]);
-		
-		// COLUMN 2 : Type
-		COLUMN21.setText(type[0]);
-		COLUMN22.setText(type[1]);
-		COLUMN23.setText(type[2]);
-		COLUMN24.setText(type[3]);
-		
-		// COLUMN 3 : Qte
-		COLUMN31.setText(qte[0]);
-		COLUMN32.setText(qte[1]);
-		COLUMN33.setText(qte[2]);
-		COLUMN34.setText(qte[3]);
-	}
+	@FXML
+	private TableView<Equipement> table;
+	@FXML
+	private TableColumn<Equipement, String> nom;
+	@FXML
+	private TableColumn<Equipement, String> type;
+	@FXML
+	private TableColumn<Equipement, String> qte;
+	
+	public ObservableList<Equipement> ListTableEquipement() throws SQLException {
+        String[] nomTable = getEquipementNom();
+        String[] typeTable = getEquipementType();
+        String[] qteTable = getEquipementQte();
+
+        ObservableList<Equipement> list = FXCollections.observableArrayList(
+            new Equipement(nomTable[0], typeTable[0], qteTable[0]),
+            new Equipement(nomTable[1], typeTable[1], qteTable[1]),
+            new Equipement(nomTable[2], typeTable[2], qteTable[2]),
+            new Equipement(nomTable[3], typeTable[3], qteTable[3]),
+            new Equipement(nomTable[4], typeTable[4], qteTable[4]),
+            new Equipement(nomTable[5], typeTable[5], qteTable[5]),
+            new Equipement(nomTable[6], typeTable[6], qteTable[6]),
+            new Equipement(nomTable[7], typeTable[7], qteTable[7]),
+            new Equipement(nomTable[8], typeTable[8], qteTable[8]),
+            new Equipement(nomTable[9], typeTable[9], qteTable[9]),
+            new Equipement(nomTable[10], typeTable[10], qteTable[10]),
+            new Equipement(nomTable[11], typeTable[11], qteTable[11]),
+            new Equipement(nomTable[12], typeTable[12], qteTable[12]),
+            new Equipement(nomTable[13], typeTable[13], qteTable[13])
+        );
+
+        return list;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        nom.setCellValueFactory(new PropertyValueFactory<Equipement, String>("nom"));
+        type.setCellValueFactory(new PropertyValueFactory<Equipement, String>("type"));
+        qte.setCellValueFactory(new PropertyValueFactory<Equipement, String>("qte"));
+        try {
+            table.setItems(ListTableEquipement());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    };
 	
 	@FXML 
 	private void ShowPasswordAnchor() throws SQLException {
-		equipementValue();
 		PasswordAnchor.setVisible(true);
 		LoginSelection.setVisible(false);
 	}

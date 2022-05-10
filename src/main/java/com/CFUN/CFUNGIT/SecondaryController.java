@@ -179,6 +179,7 @@ public class SecondaryController {
 			
 			BilletInfoAnchor.setVisible(true);
 			//	System.out.println(leComplexe.sortieUsager(TicketNumber));
+			leComplexe.sortieUsager(TicketNumber);
 
 			} catch (Exception e) {
 				//	System.out.println("Erreur sur le ticket ! ");

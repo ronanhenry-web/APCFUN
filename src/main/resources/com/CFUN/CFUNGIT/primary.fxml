@@ -11,8 +11,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -135,36 +133,13 @@
                         <Font size="30.0" />
                      </font>
                   </Text>
-                  <TableView layoutX="12.0" layoutY="102.0" prefHeight="294.0" prefWidth="470.0">
+                  <TableView fx:id="table" layoutX="12.0" layoutY="102.0" prefHeight="294.0" prefWidth="470.0">
                      <columns>
-                        <TableColumn editable="false" prefWidth="196.0" sortable="false" text="Nom" />
-                        <TableColumn editable="false" prefWidth="199.99993896484375" sortable="false" text="Type" />
-                        <TableColumn editable="false" prefWidth="74.39996337890625" sortable="false" text="Quantité" />
+                        <TableColumn fx:id="nom" editable="false" prefWidth="196.0" sortable="false" text="Nom" />
+                        <TableColumn fx:id="type" editable="false" prefWidth="199.99993896484375" sortable="false" text="Type" />
+                        <TableColumn fx:id="qte" editable="false" prefWidth="74.39996337890625" sortable="false" text="Quantité" />
                      </columns>
                   </TableView>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="58.0" layoutX="148.0" layoutY="255.0" stroke="WHITE" strokeType="INSIDE" width="200.0" />
-                  <Line endX="368.0" layoutX="113.0" layoutY="156.0" startX="-100.0" />
-                  <Line endX="368.0" layoutX="113.0" layoutY="216.0" startX="-100.0" />
-                  <Line endX="368.0" layoutX="113.0" layoutY="186.0" startX="-100.0" />
-                  <Line endX="368.0" layoutX="113.0" layoutY="246.0" startX="-100.0" />
-                  <Line endX="368.0" layoutX="113.0" layoutY="276.0" startX="-100.0" />
-                  <Line endX="368.0" layoutX="113.0" layoutY="306.0" startX="-100.0" />
-                  <Line endX="368.0" layoutX="113.0" layoutY="336.0" startX="-100.0" />
-                  <Line endX="368.0" layoutX="113.0" layoutY="366.0" startX="-100.0" />
-                  <Line endX="84.0" endY="229.0" layoutX="124.5" layoutY="166.0" startX="84.0" startY="-40.0" />
-                  <Line endX="84.0" endY="229.0" layoutX="324.5" layoutY="166.0" startX="84.0" startY="-40.0" />
-                  <Text fx:id="COLUMN11" layoutX="15.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
-                  <Text fx:id="COLUMN12" layoutX="15.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
-                  <Text fx:id="COLUMN14" layoutX="15.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
-                  <Text fx:id="COLUMN13" layoutX="15.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
-                  <Text fx:id="COLUMN21" layoutX="211.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
-                  <Text fx:id="COLUMN22" layoutX="211.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
-                  <Text fx:id="COLUMN24" layoutX="211.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
-                  <Text fx:id="COLUMN23" layoutX="211.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="193.4893798828125" />
-                  <Text fx:id="COLUMN31" layoutX="411.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="71.08929443359375" />
-                  <Text fx:id="COLUMN32" layoutX="411.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="71.08929443359375" />
-                  <Text fx:id="COLUMN33" layoutX="411.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="71.08929443359375" />
-                  <Text fx:id="COLUMN34" layoutX="411.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="71.08929443359375" />
                   <JFXButton layoutX="358.0" layoutY="470.0" onAction="#Disconnect" prefHeight="39.0" prefWidth="101.0" style="-fx-background-color: #ff6f16;" text="Déconnecter" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />

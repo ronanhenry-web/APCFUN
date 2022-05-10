@@ -1,5 +1,6 @@
 package com.CFUN.sqlite;
 
+import java.net.URL;
 import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
 //table gestionnaire avec nom, prenom et password
 //table equipement avec nom, type et quantité
@@ -42,10 +44,12 @@ public class Database {
         return (String[]) password;
     }
     
-    //	Récupérer tout les noms dans la table équipement
+    
 	public static String[] equipementNom = new String[999];
     public static String[] equipementType = new String[999];
     public static String[] equipementQte = new String[999];
+    
+    //	Récupérer tout les noms dans la table équipement
     public static String[] getEquipementNom() throws SQLException {
     	String jdbcUrl = "jdbc:sqlite:cfun.db";
         Connection connection = DriverManager.getConnection(jdbcUrl);
