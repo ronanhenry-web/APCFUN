@@ -1,4 +1,4 @@
-# Projet Java
+# Projet APCFUN
 
 Sur l'entrée et sortie d'une salle de sport
 
